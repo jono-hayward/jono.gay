@@ -60,7 +60,7 @@ header {
   align-items: baseline;
   column-gap: 1em;
 }
-h1, h3 {
+h1, span {
   margin: 0;
   line-height: 1;
 }
@@ -71,7 +71,7 @@ h1 {
   font-weight: 900;
 }
 
-h3 {
+span {
   font-weight: 300;
   font-size: 1.3em;
 }
