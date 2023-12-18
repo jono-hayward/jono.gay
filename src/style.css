@@ -54,12 +54,12 @@ body {
 }
 
 header {
-  margin: 1em 0;
+  margin: 1.5em 0;
 }
 
 h1 {
   font-size: 2.6em;
-  line-height: 1;
+  line-height: 1.2;
   margin: 0;
   letter-spacing: -.06em;
   display: inline;
