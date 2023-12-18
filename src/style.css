@@ -85,16 +85,16 @@ aside {
   max-width: 50vw;
   aspect-ratio: 1;
   display: flex;
-  transform: translate3d(0, 0, 0);
-  margin: 0 auto;
+  transform: translate3d(0, 0, 0); 
 }
 aside::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 80%;
+  height: 80%;
   display: block;
   border-radius: 50%;
   z-index: 0;
@@ -129,9 +129,6 @@ main {
   grid-column: 2 / 4;
 }
 
-header {
-
-}
 
 img {
   position: relative;
@@ -143,6 +140,7 @@ img {
 p strong {
   position: relative;
   text-shadow: 0 0 0 5px white;
+  white-space: nowrap;
 }
 
 p strong::before {
@@ -151,7 +149,7 @@ p strong::before {
   top: 60%;
   left: 0;
   width: 100%;
-  height: 50%;
+  height: 30%;
   background: linear-gradient(to right,
     #001A98,  
     #760089,
@@ -170,7 +168,7 @@ p strong::before {
   z-index: -1;
 
   translate: 0 -50%;
-  filter: blur(.8em);
+  filter: blur(.6em);
 }
 
 div {
