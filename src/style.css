@@ -31,15 +31,15 @@
 
 a {
   font-weight: 700;
-  color: #646cff;
+  color: #525AF5;
   text-decoration: underline;
   padding: 0 .15em .1em;
 }
 a:hover {
-  background: #646cff;
+  background: #525AF5;
   color: #fff;
   border-radius: .1em;
-  box-shadow: 0 0 0 .1em #646cff;
+  box-shadow: 0 0 0 .1em #525AF5;
 }
 
 body {
