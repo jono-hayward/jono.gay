@@ -33,12 +33,12 @@ a {
   font-weight: 700;
   color: #646cff;
   text-decoration: underline;
-  padding: 0 .1em;
+  padding: 0 .15em .1em;
 }
 a:hover {
   background: #646cff;
   color: #fff;
-  border-radius: .05em;
+  border-radius: .1em;
   box-shadow: 0 0 0 .1em #646cff;
 }
 
