@@ -24,6 +24,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --link: #525AF5;
 }
 
 
@@ -138,15 +140,15 @@ span {
 
 a {
   font-weight: 700;
-  color: #525AF5;
+  color: var(--link);
   text-decoration: underline;
   padding: 0 .15em .1em;
 }
 a:hover {
-  background: #525AF5;
+  background: var(--link);
   color: #fff;
   border-radius: .1em;
-  box-shadow: 0 0 0 .1em #525AF5;
+  box-shadow: 0 0 0 .1em var(--link);
 }
 
 strong.gay {
