@@ -68,7 +68,7 @@ p + p {
 aside {
   grid-column: 1 / 2;
   position: relative;
-  max-width: 50vw;
+  max-width: max-content;
   aspect-ratio: 1;
   display: flex;
   transform: translate3d(0, 0, 0); 
