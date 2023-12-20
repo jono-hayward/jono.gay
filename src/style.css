@@ -68,7 +68,7 @@ p + p {
 aside {
   grid-column: 1 / 2;
   position: relative;
-  max-width: max-content;
+  max-width: 30vw;
   aspect-ratio: 1;
   display: flex;
   transform: translate3d(0, 0, 0); 
@@ -116,7 +116,7 @@ main {
 
 img {
   position: relative;
-  max-width: min(100%, 50vw);
+  max-width: 100%;
   z-index: 1;
   mix-blend-mode: hard-light;
   grid-area: 1 / 1 / 2 / 2;
