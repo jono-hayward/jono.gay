@@ -141,7 +141,6 @@ span {
 a {
   font-weight: 700;
   color: var(--link);
-  text-decoration: underline;
   padding: 0 .15em .1em;
 }
 a:hover {
