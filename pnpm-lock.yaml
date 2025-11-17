@@ -7,14 +7,7 @@ settings:
 importers:
 
   .:
-    dependencies:
-      lightningcss:
-        specifier: ^1.22.1
-        version: 1.22.1
     devDependencies:
-      typescript:
-        specifier: ^5.2.2
-        version: 5.3.3
       vite:
         specifier: ^5.0.8
         version: 5.0.10(lightningcss@1.22.1)
@@ -312,11 +305,6 @@ packages:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
 
-  typescript@5.3.3:
-    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
   vite@5.0.10:
     resolution: {integrity: sha512-2P8J7WWgmc355HUMlFrwofacvr98DAjoE52BfdbwQtyLH06XKwaL/FMnmKM2crF0iX4MpmMKoDlNCB1ok7zHCw==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -452,7 +440,8 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.9.1':
     optional: true
 
-  detect-libc@1.0.3: {}
+  detect-libc@1.0.3:
+    optional: true
 
   esbuild@0.19.9:
     optionalDependencies:
@@ -522,6 +511,7 @@ snapshots:
       lightningcss-linux-x64-gnu: 1.22.1
       lightningcss-linux-x64-musl: 1.22.1
       lightningcss-win32-x64-msvc: 1.22.1
+    optional: true
 
   nanoid@3.3.7: {}
 
@@ -552,13 +542,11 @@ snapshots:
 
   source-map-js@1.0.2: {}
 
-  typescript@5.3.3: {}
-
   vite@5.0.10(lightningcss@1.22.1):
     dependencies:
       esbuild: 0.19.9
-      lightningcss: 1.22.1
       postcss: 8.4.32
       rollup: 4.9.1
     optionalDependencies:
       fsevents: 2.3.3
+      lightningcss: 1.22.1
