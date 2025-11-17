@@ -65,11 +65,12 @@ body {
   display: grid;
   place-items: center;
   font-size: 1.2rem;
+  overflow-x: hidden;
 }
 
 article {
   width: 100%;
-  max-width: min(100vw, 84rem);
+  max-width: min(100vw, 82rem);
   padding: 6rem 1rem;
   display: flex;
   flex-direction: column;
@@ -170,6 +171,7 @@ a {
   top: -0.6rem;
   right: -2rem;
   z-index: -1;
+  animation: glow-rotate 20s linear infinite;
 }
 
 .portrait {
@@ -185,7 +187,6 @@ a {
       radial-gradient(var(--bg), oklch(from var(--accent) l c h / 0.7)),
     border-box conic-gradient(from var(--glow-angle) at 50% 50%, var(--rainbow));
   border-radius: var(--radius-padding);
-  animation: glow-rotate 20s linear infinite;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -221,17 +222,26 @@ a {
   border-radius: var(--radius-padding);
 }
 
-.portrait-wrapper::before {
+.portrait::before {
+  content: "";
+  position: absolute;
   inset: 2px;
   border: 0.5rem solid var(--bg);
   z-index: 0;
+  border-radius: var(--radius-padding);
+}
+
+.portrait-wrapper::before {
+  inset: -9rem;
+  background: transparent;
+  backdrop-filter: blur(3rem);
+  z-index: -1;
 }
 
 .portrait-wrapper::after {
   inset: 0;
   z-index: -2;
   background: conic-gradient(from var(--glow-angle) at 50% 50%, var(--rainbow));
-  filter: blur(4rem);
   opacity: 0.45;
 }
 
@@ -304,6 +314,23 @@ a {
   flex-flow: column;
   gap: 1.5rem;
   color: var(--aoc-text);
+  background-color: oklch(from var(--bg) l c h / 0.5);
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset-block: -2px;
+    background: inherit;
+    border: inherit;
+    width: calc((100vw - 80rem) / 2);
+  }
+  &::before {
+    right: 100%;
+  }
+  &::after {
+    left: 100%;
+  }
 }
 
 @media (min-width: 900px) {
@@ -313,6 +340,9 @@ a {
   }
   body {
     font-size: 1.5rem;
+  }
+  article {
+    max-width: min(100vw, 84rem);
   }
   h1 {
     margin: 0;
@@ -347,6 +377,7 @@ a {
       --radius: 6rem;
     }
     .portrait,
+    .portrait::before,
     .portrait-wrapper::before,
     .portrait-wrapper::after,
     .portrait img {
@@ -355,7 +386,7 @@ a {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .portrait {
+  .portrait-wrapper {
     animation: none;
   }
 }
