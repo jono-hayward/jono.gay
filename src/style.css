@@ -344,12 +344,12 @@ a {
     overflow: visible;
   }
   .bio {
-    flex: 1 1 auto;
+    flex: 1 1 60%;
   }
   .portrait-wrapper {
     position: relative;
     inset: auto;
-    flex: 1 1 50%;
+    flex: 1 1 40%;
   }
   .portrait {
     width: auto;
