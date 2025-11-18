@@ -7,9 +7,10 @@
 }
 
 :root {
-  --radius: 0 0 0 34vw;
   --portrait-padding: 0.5rem;
-  --radius-padding: 0 0 0 calc(34vw + var(--portrait-padding));
+  --radius-base: 42vmin;
+  --radius: 0 0 0 var(--radius-base);
+  --radius-padding: 0 0 0 calc(var(--radius-base) + var(--portrait-padding));
   --rainbow: #ffffff, #ffafc8, #74d7ee, #613915, #e40303, #ff8c00, #ffed00,
     #008026, #004dff, #750787, #ffffff;
 
@@ -101,7 +102,7 @@ h1 {
   font-family: "IBM Plex Sans Condensed", "Helvetica Neue Condensed",
     "Arial Narrow", sans-serif;
   text-transform: uppercase;
-  margin: 60vw 0 0;
+  margin: 80vw 0 0;
 
   small {
     display: block;
@@ -175,19 +176,14 @@ a {
 
 .portrait {
   width: 90vw;
-  aspect-ratio: 1;
-
+  aspect-ratio: 1 / 1.1;
   padding: var(--portrait-padding);
   border: 2px solid transparent;
-  display: flex;
 
   background: padding-box
       radial-gradient(var(--bg), oklch(from var(--accent) l c h / 0.7)),
     border-box conic-gradient(from var(--glow-angle) at 50% 50%, var(--rainbow));
   border-radius: var(--radius-padding);
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
 
   &:hover img[role="presentation"] {
     opacity: 1;
@@ -195,18 +191,17 @@ a {
 }
 
 .portrait img {
-  aspect-ratio: 1;
-  max-width: 100%;
+  position: absolute;
+  inset: calc(var(--portrait-padding) * -1) var(--portrait-padding)
+    var(--portrait-padding);
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
   mix-blend-mode: luminosity;
   border-radius: var(--radius);
-  z-index: 1;
-  grid-row: 1 / 1;
-  grid-column: 1 / 1;
 }
 
 .portrait img[role="presentation"] {
+  pointer-events: none;
   mix-blend-mode: normal;
   opacity: 0;
   transition: opacity 350ms ease-in-out;
@@ -280,9 +275,6 @@ a {
 }
 
 @media (max-width: 900px) and (orientation: landscape) {
-  :root {
-    --radius: 0 0 0 40vh;
-  }
   article {
     padding-inline-start: calc(2rem + env(safe-area-inset-left));
     padding-inline-end: calc(2rem + env(safe-area-inset-right));
@@ -296,7 +288,7 @@ a {
     }
   }
   h1 {
-    margin: 0vh 0 30vh;
+    margin: 0 0 30vh;
   }
 }
 
@@ -353,17 +345,18 @@ a {
     flex: 1 1 auto;
   }
   .portrait-wrapper {
-    inset: auto;
     position: relative;
+    inset: auto;
+    flex: 1 1 50%;
   }
   .portrait {
-    aspect-ratio: unset;
     width: auto;
-    flex: 1 1 auto;
+    aspect-ratio: 4 / 6;
   }
   .portrait img {
-    aspect-ratio: unset;
-    max-width: 100%;
+    inset: var(--portrait-padding);
+    width: calc(100% - var(--portrait-padding) * 2);
+    height: calc(100% - var(--portrait-padding) * 2);
   }
   .pronouns {
     bottom: auto;
@@ -384,6 +377,11 @@ a {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .portrait-wrapper {
+    animation: none;
+  }
+}
+@supports (font: -apple-system-body) {
   .portrait-wrapper {
     animation: none;
   }
