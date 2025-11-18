@@ -7,6 +7,7 @@
 }
 
 :root {
+  --content-width: min(90vw, 80rem);
   --portrait-padding: 0.5rem;
   --radius-base: 42vmin;
   --radius: 0 0 0 var(--radius-base);
@@ -74,11 +75,13 @@ article {
   flex-direction: column;
   gap: 3rem;
   position: relative;
+  overflow: hidden;
+  width: 100vw;
 }
 
 .body,
 .acknowledgement-of-country {
-  max-width: min(90vw, 80rem);
+  max-width: var(--content-width);
   margin-inline: auto;
 }
 .bio {
@@ -209,7 +212,7 @@ a {
 .portrait-wrapper {
   position: absolute;
   top: -0.6rem;
-  right: -2rem;
+  right: -1rem;
 }
 
 .portrait {
@@ -258,7 +261,7 @@ a {
 }
 
 .portrait::before {
-  inset: 0px;
+  inset: 2px;
   z-index: 0;
   background: radial-gradient(var(--bg), transparent);
   border: var(--portrait-padding) solid var(--bg);
@@ -322,7 +325,7 @@ a {
     }
   }
   h1 {
-    margin: 0 0 30vh;
+    margin: 0 0 50vh;
   }
 }
 
@@ -334,9 +337,6 @@ a {
 .acknowledgement-of-country {
   padding-block: 3rem;
   border-top: 2px solid var(--accent);
-  display: flex;
-  flex-flow: column;
-  gap: 1.5rem;
   color: var(--aoc-text);
   background-color: oklch(from var(--bg) l c h / 0.35);
   position: relative;
@@ -347,7 +347,7 @@ a {
     inset-block: -2px;
     background: inherit;
     border: inherit;
-    width: calc((100vw - 80rem) / 2);
+    width: calc((100vw - var(--content-width)) / 2);
   }
   &::before {
     right: 100%;
@@ -374,6 +374,7 @@ a {
   article,
   .body {
     position: relative;
+    overflow: unset;
   }
 
   .body {
@@ -405,6 +406,12 @@ a {
     left: -1.5rem;
   }
 
+  .acknowledgement-of-country {
+    display: flex;
+    align-items: start;
+    gap: 4rem;
+  }
+
   @supports (corner-shape: squircle) {
     :root {
       --radius: 6rem;
@@ -419,12 +426,12 @@ a {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .portrait-wrapper {
+  .portrait {
     animation: none;
   }
 }
 @supports (font: -apple-system-body) {
-  .portrait-wrapper {
+  .portrait {
     animation: none;
   }
 }
