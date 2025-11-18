@@ -192,8 +192,10 @@ a {
 
 .portrait img {
   position: absolute;
-  inset: calc(var(--portrait-padding) * -1) var(--portrait-padding)
-    var(--portrait-padding);
+  inset: var(--portrait-padding);
+
+  width: calc(100% - var(--portrait-padding) * 2);
+  height: calc(100% - var(--portrait-padding) * 2);
   object-fit: cover;
   object-position: center;
   mix-blend-mode: luminosity;
@@ -355,8 +357,6 @@ a {
   }
   .portrait img {
     inset: var(--portrait-padding);
-    width: calc(100% - var(--portrait-padding) * 2);
-    height: calc(100% - var(--portrait-padding) * 2);
   }
   .pronouns {
     bottom: auto;
