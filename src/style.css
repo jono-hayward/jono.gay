@@ -131,7 +131,7 @@ li {
   border-radius: 0.25rem;
   display: flex;
   gap: 0.5rem;
-  box-shadow: 0 2px 4px oklch(0 0 0 / 0.1);
+  box-shadow: 0 1px 1px oklch(0 0 0 / 0.2);
 }
 
 p {
@@ -160,6 +160,7 @@ abbr {
     opacity: 0;
     translate: 0 0.5rem;
     transition: opacity 250ms ease-in-out, translate 250ms ease-in-out;
+    border: 1px solid oklch(1 0 0 / 0.45);
   }
 
   &::before {
@@ -181,11 +182,11 @@ abbr {
     content: "";
     bottom: 90%;
     left: 0.875rem;
-    width: 0.35rem;
+    width: 0.55rem;
     aspect-ratio: 1;
     rotate: 45deg;
-    border: 1px solid oklch(1 0 0 / 0.45);
-    border-width: 0 1px 1px 0;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    border-width: 1.5px;
   }
 
   &:hover,
@@ -204,9 +205,32 @@ figure {
 }
 
 a {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--link);
   text-underline-offset: 10%;
+  position: relative;
+  margin-inline-start: 0.2em;
+
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.2em;
+    background: var(--link);
+    color: var(--bg);
+    border-radius: 4px;
+    pointer-events: none;
+    line-height: 1;
+
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  &:hover::after,
+  &:focus::after {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 .portrait-wrapper {
@@ -338,7 +362,7 @@ a {
   padding-block: 3rem;
   border-top: 2px solid var(--accent);
   color: var(--aoc-text);
-  background-color: oklch(from var(--bg) l c h / 0.35);
+  background-color: oklch(from var(--bg) l c h / 0.15);
   position: relative;
   &::before,
   &::after {
@@ -396,6 +420,10 @@ a {
     max-height: 90vh;
     width: auto;
     aspect-ratio: 4 / 6;
+
+    &::before {
+      inset: 0;
+    }
   }
   .portrait img {
     inset: var(--portrait-padding);
