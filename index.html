@@ -23,6 +23,17 @@
       property="og:description"
       content="I'm a queer nerd, Trekkie and front-end web dev from Naarm 🇦🇺"
     />
+    <script type="module">
+      document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("pointerdown", (event) => {
+          const target = event.target;
+          if (!target?.closest("a, abbr")) {
+            document.activeElement instanceof HTMLElement &&
+              document.activeElement.blur();
+          }
+        });
+      });
+    </script>
   </head>
   <body>
     <article>
@@ -189,6 +200,7 @@
               role="presentation"
               aria-hidden="true"
             />
+            <div class="noise" aria-hidden="true"></div>
             <div class="pronouns" aria-hidden="true">
               <div class="badge">
                 he

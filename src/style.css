@@ -15,6 +15,8 @@
   --rainbow: #ffffff, #ffafc8, #74d7ee, #613915, #e40303, #ff8c00, #ffed00,
     #008026, #004dff, #750787, #ffffff;
 
+  --noise-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' seed='19'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.6'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.15'/%3E%3C/svg%3E");
+
   --text: oklch(0.2619 0.0444 248.72);
   --bg: oklch(0.9943 0.0106 136.56);
   --aoc-text: oklch(0.5521 0.2265 29.23);
@@ -41,7 +43,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --text: oklch(1 0 0);
-    --bg: oklch(0.2178 0.0401 251.43);
+    --bg: oklch(0.14 0.0401 251.43);
     --aoc-text: var(--text);
     --link: oklch(0.7264 0.1587 294.57);
     --accent: oklch(0.2619 0.0444 248.72);
@@ -77,6 +79,18 @@ article {
   position: relative;
   overflow: hidden;
   width: 100vw;
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--noise-texture);
+  background-repeat: repeat;
+  mix-blend-mode: soft-light;
+  background-size: 150px;
+  background-attachment: fixed;
+  z-index: -1;
 }
 
 .body,
@@ -180,9 +194,9 @@ abbr {
 
   &::after {
     content: "";
-    bottom: 90%;
+    bottom: 87.5%;
     left: 0.875rem;
-    width: 0.55rem;
+    width: 0.625rem;
     aspect-ratio: 1;
     rotate: 45deg;
     clip-path: polygon(100% 0, 100% 100%, 0 100%);
@@ -362,7 +376,11 @@ a {
   padding-block: 3rem;
   border-top: 2px solid var(--accent);
   color: var(--aoc-text);
-  background-color: oklch(from var(--bg) l c h / 0.15);
+  background: linear-gradient(
+    to bottom,
+    oklch(from var(--bg) l c h / 0.15),
+    transparent
+  );
   position: relative;
   &::before,
   &::after {
