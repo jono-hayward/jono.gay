@@ -1,8 +1,25 @@
-.DS_Store
 node_modules
-dist
-vite.config.js.timestamp-*
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
 .env
-.svelte-kit
-.cloudflare
-.pnpm-debug.log
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+# Cloudflare Types
+/worker-configuration.d.ts
