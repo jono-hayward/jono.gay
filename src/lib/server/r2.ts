@@ -25,7 +25,7 @@ export interface R2Image {
 	 */
 	baseName: string;
 	/** Width in pixels */
-	width: 640 | 960 | 1280 | 1440 | 3440;
+	width: 640 | 960 | 1440 | 3440;
 	/** File format */
 	format: 'avif' | 'webp';
 }
@@ -42,7 +42,7 @@ function parseKey(key: string): R2Image | null {
 	const [, game, baseName, widthStr, format] = match;
 	const width = parseInt(widthStr, 10);
 
-	if (![640, 960, 1280, 1440].includes(width)) return null;
+	if (![640, 960, 1440, 3440].includes(width)) return null;
 
 	return {
 		key,

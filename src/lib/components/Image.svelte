@@ -24,7 +24,7 @@
 	const assetsUrl = env.PUBLIC_ASSETS_URL ?? 'https://assets.photomode.jono.gay';
 
 	/** Breakpoints matching the sizes exported from GC12 */
-	const BREAKPOINTS = [640, 960, 1280, 1440, 3440] as const;
+	const BREAKPOINTS = [640, 960, 1440, 3440] as const;
 
 	/**
 	 * Builds a direct R2 URL for a given image, extension and width.
@@ -44,8 +44,8 @@
 	const avifSrcset = $derived(buildSrcset('avif'));
 	const webpSrcset = $derived(buildSrcset('webp'));
 
-	/** Fallback src for browsers without <picture> support — 1280w WebP */
-	const fallbackSrc = $derived(buildUrl('webp', 1280));
+	/** Fallback src for browsers without <picture> support — 1440w WebP */
+	const fallbackSrc = $derived(buildUrl('webp', 1440));
 </script>
 
 <picture style={game.aspectRatio ? `aspect-ratio: ${game.aspectRatio}` : undefined}>
