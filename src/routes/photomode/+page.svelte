@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { env } from '$env/dynamic/public';
+	import { resolve } from '$app/paths';
+	import type { GalleryImage } from '$lib/types/gallery';
 
-	import type { PageData } from './$types';
-	import Image from '$lib/components/Image.svelte';
+	// import Image from '$lib/components/Image.svelte';
 
-	const { data }: { data: PageData } = $props();
-	const games = data.games;
+	const props = $props();
+	let games = $state(props.data.games);
 </script>
 
 <svelte:head>
@@ -20,9 +21,9 @@
 	{#each games as game (game.id)}
 		<article id={game.id} class="game container">
 			<h2>{game.title}</h2>
-			{#each game.images.filter((img) => img.display) as pic (pic.id)}
+			{#each game.images.filter((img: GalleryImage) => img.display) as pic (pic.id)}
 				<figure class="thumb corners" class:nsfw={pic.nsfw}>
-					<a href={`/photomode/${game.id}/${pic.id}`}
+					<a href={resolve(`/photomode/${game.id}/${pic.id}`)}
 						><img
 							alt={pic.alt}
 							src={`${env.PUBLIC_ASSETS_URL}/${game.id}/${pic.id}-640w.webp`}

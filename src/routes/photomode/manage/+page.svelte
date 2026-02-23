@@ -7,8 +7,6 @@
 
 	const { data }: { data: PageData } = $props();
 
-	console.log(data);
-
 	let games = $state(data.games);
 	let loading = $state(false);
 
@@ -26,11 +24,11 @@
 			images: images.map((img) => ({
 				display: true,
 				id: img.id,
-				title: '',
 				caption: '',
 				alt: '',
 				hdr: img.hdr,
-				sdr: img.sdr
+				sdr: img.sdr,
+				nsfw: false
 			}))
 		};
 		games = [...games, newGame];
