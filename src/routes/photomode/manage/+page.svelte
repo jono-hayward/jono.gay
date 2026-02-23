@@ -80,6 +80,14 @@
 								<span>Description</span>
 								<textarea bind:value={game.description} rows={4}></textarea>
 							</label>
+							<label>
+								<span>Aspect ratio</span>
+								<select bind:value={game.aspectRatio}>
+									<option value="3440/1440">Ultrawide</option>
+									<option value="16/9">Wide</option>
+									<option value="4/3">Narrow</option>
+								</select>
+							</label>
 
 							<ul
 								class="images"
@@ -198,7 +206,8 @@
 		}
 
 		input,
-		textarea {
+		textarea,
+		select {
 			padding: 0.5em;
 			border: 1px solid #d1d2d3;
 			border-radius: 8px;
@@ -215,13 +224,6 @@
 	}
 	details[open] summary {
 		border-bottom: 1px solid #e1e2e3;
-	}
-
-	select {
-		border-radius: 100vh;
-		border: 1px solid oklch(80% 0.01 240);
-		padding: 0.6em 1.2em;
-		appearance: none;
 	}
 
 	button {
@@ -318,6 +320,13 @@
 		justify-content: space-between;
 		margin-block-start: 1em;
 		padding-inline: 1em;
+
+		select {
+			border-radius: 100vh;
+			border: 1px solid oklch(80% 0.01 240);
+			padding: 0.6em 1.2em;
+			appearance: none;
+		}
 	}
 
 	.grab-handle {

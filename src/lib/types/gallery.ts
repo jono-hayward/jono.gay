@@ -15,6 +15,7 @@ export interface Game {
 	title: string;
 	description: string;
 	images: GalleryImage[];
+	aspectRatio?: string; // e.g. "3440/1440" or "2560/1440"
 }
 
 /** Root data structure stored in KV */

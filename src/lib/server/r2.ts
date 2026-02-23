@@ -25,7 +25,7 @@ export interface R2Image {
 	 */
 	baseName: string;
 	/** Width in pixels */
-	width: 640 | 960 | 1280 | 1440;
+	width: 640 | 960 | 1280 | 1440 | 3440;
 	/** File format */
 	format: 'avif' | 'webp';
 }

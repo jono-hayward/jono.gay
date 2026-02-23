@@ -60,7 +60,7 @@
 		}}
 	>
 		{#if currentImg && currentGame}
-			<Image src={`${currentGame.id}/${currentImg.id}`} alt={currentImg.alt} loading="eager" />
+			<Image game={currentGame} pic={currentImg} loading="eager" />
 		{/if}
 	</dialog>
 </main>
@@ -94,6 +94,8 @@
 		padding: 0;
 		border: none;
 		box-shadow: 0 0 32px -8px black;
+		max-width: 90vw;
+		max-height: 90vh;
 		&::backdrop {
 			background: rgb(0 0 0 / 0.25);
 			backdrop-filter: blur(4px);
