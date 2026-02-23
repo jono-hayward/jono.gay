@@ -2,10 +2,12 @@
 	import { resolve } from '$app/paths';
 	import type { GalleryImage, Game } from '$lib/types/gallery';
 
+	import { PUBLIC_ASSETS_URL } from '$env/static/public';
+
 	// import Image from '$lib/components/Image.svelte';
 
 	const props = $props();
-	const PUBLIC_ASSETS_URL = props.data.publicAssetsUrl ?? '';
+	// const PUBLIC_ASSETS_URL = props.data.publicAssetsUrl ?? '';
 	let games: Game[] = $state(props.data.games);
 </script>
 

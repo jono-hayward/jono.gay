@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 
-import { env } from '$env/dynamic/public';
+// import { env } from '$env/dynamic/public';
 
 import { getGalleryData } from '$lib/server/gallery';
 
@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ platform }) => {
 
 	const { games } = await getGalleryData(platform);
 	return {
-		publicAssetsUrl: env.PUBLIC_ASSETS_URL ?? null,
+		// publicAssetsUrl: env.PUBLIC_ASSETS_URL ?? null,
 		games
 	};
 };
