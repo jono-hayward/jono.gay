@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { flip } from 'svelte/animate';
 	import { dragHandleZone, dragHandle } from 'svelte-dnd-action';
-	import type { PageData } from './$types';
 	import type { Game, GalleryImage, GalleryData } from '$lib/types/gallery';
 	import { env } from '$env/dynamic/public';
 
-	const { data }: { data: PageData } = $props();
+	const props = $props();
+	let games: Game[] = $state(props.data.games);
+	let assets: Game[] = $state(props.data.assets);
 
-	let games = $state(data.games);
 	let loading = $state(false);
 
 	const flipDurationMs = 300;
@@ -15,7 +15,7 @@
 	const addGame = (e: Event) => {
 		const menu = e.target as HTMLSelectElement;
 		if (!menu?.value) return;
-		const images = data.assets.find((asset) => asset.id === menu.value)?.images as GalleryImage[];
+		const images = assets.find((asset) => asset.id === menu.value)?.images as GalleryImage[];
 
 		const newGame: Game = {
 			id: menu.value,
@@ -143,7 +143,7 @@
 			<aside>
 				<select onchange={addGame}>
 					<option value="" disabled selected> Add game </option>
-					{#each data.assets as game (game.id)}
+					{#each assets as game (game.id)}
 						<option value={game.id}>{game.id.replace(/-/g, ' ')}</option>
 					{/each}
 				</select>
@@ -237,10 +237,10 @@
 			border: 1px solid oklch(60% 0.5 240);
 			color: white;
 		}
-		&.secondary {
+		/*&.secondary {
 			background: oklch(90% 0.01 240);
 			border: 1px solid oklch(80% 0.01 240);
-		}
+		}*/
 		&.destructive {
 			background: oklch(75% 0.35 20);
 			border: 1px solid oklch(60% 0.3 20);

@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { env } from '$env/dynamic/public';
 	import { resolve } from '$app/paths';
-	import type { GalleryImage } from '$lib/types/gallery';
+	import type { GalleryImage, Game } from '$lib/types/gallery';
 
 	// import Image from '$lib/components/Image.svelte';
 
 	const props = $props();
-	let games = $state(props.data.games);
+	let games: Game[] = $state(props.data.games);
 </script>
 
 <svelte:head>
