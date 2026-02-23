@@ -14,7 +14,8 @@
 		"format": "prettier --write .",
 		"gen": "wrangler types",
 		"upload": "tsx --env-file=.env bin/r2upload.ts",
-		"upload:game": "tsx --env-file=.env bin/r2upload.ts --game"
+		"upload:game": "tsx --env-file=.env bin/r2upload.ts --game",
+		"publish:kv": "wrangler kv key get --binding=PHOTOMODE_KV \"games\" --local > /tmp/kv-games.json && wrangler kv key put --binding=PHOTOMODE_KV \"games\" --path=/tmp/kv-games.json --remote && rm /tmp/kv-games.json"
 	},
 	"devDependencies": {
 		"@aws-sdk/client-s3": "^3.995.0",
