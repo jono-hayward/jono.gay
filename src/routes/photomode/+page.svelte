@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { env } from '$env/dynamic/public';
+	import { PUBLIC_ASSETS_URL } from '$env/static/public';
 	import { resolve } from '$app/paths';
 	import type { GalleryImage, Game } from '$lib/types/gallery';
 
@@ -24,10 +24,7 @@
 			{#each game.images.filter((img: GalleryImage) => img.display) as pic (pic.id)}
 				<figure class="thumb corners" class:nsfw={pic.nsfw}>
 					<a href={resolve(`/photomode/${game.id}/${pic.id}`)}
-						><img
-							alt={pic.alt}
-							src={`${env.PUBLIC_ASSETS_URL}/${game.id}/${pic.id}-640w.webp`}
-						/></a
+						><img alt={pic.alt} src={`${PUBLIC_ASSETS_URL}/${game.id}/${pic.id}-640w.webp`} /></a
 					>
 				</figure>
 			{/each}
