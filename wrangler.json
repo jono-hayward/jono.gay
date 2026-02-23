@@ -1,11 +1,14 @@
 {
-  "name": "jono-dot-gay",
-  "compatibility_date": "2024-01-01",
-  "pages_build_output_dir": ".svelte-kit/cloudflare",
-  "kv_namespaces": [
-    {
-      "binding": "PHOTOMODE_KV",
-      "id": "b4280d503d6548ada57ca90bd1d7c456"
-    }
-  ]
+	"name": "jono-dot-gay",
+	"compatibility_date": "2024-01-01",
+	"pages_build_output_dir": ".svelte-kit/cloudflare",
+	"kv_namespaces": [
+		{
+			"binding": "PHOTOMODE_KV",
+			"id": "b4280d503d6548ada57ca90bd1d7c456"
+		}
+	],
+	"vars": {
+		"PUBLIC_ASSETS_URL": "https://photomode.jono.gay"
+	}
 }
