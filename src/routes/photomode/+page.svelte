@@ -22,7 +22,7 @@
 			<h2>{game.title}</h2>
 			{#each game.images.filter((img) => img.display) as pic (pic.id)}
 				<figure class="thumb corners" class:nsfw={pic.nsfw}>
-					<a href="#"
+					<a href={`/photomode/${game.id}/${pic.id}`}
 						><img
 							alt={pic.alt}
 							src={`${env.PUBLIC_ASSETS_URL}/${game.id}/${pic.id}-640w.webp`}
@@ -32,11 +32,6 @@
 			{/each}
 		</article>
 	{/each}
-
-	<Image
-		src="kingdom-come-deliverance-ii/2026.01.26-18.43.41.56"
-		alt="Henry riding his horse against a golden sunset"
-	/>
 </main>
 
 <style>
