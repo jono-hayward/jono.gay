@@ -97,8 +97,8 @@
 		max-width: 90vw;
 		max-height: 90vh;
 		&::backdrop {
-			background: rgb(0 0 0 / 0.25);
-			backdrop-filter: blur(4px);
+			background: rgb(0 0 0 / 0.45);
+			backdrop-filter: blur(8px);
 		}
 	}
 
