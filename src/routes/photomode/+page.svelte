@@ -4,11 +4,22 @@
 
 	import { PUBLIC_ASSETS_URL } from '$env/static/public';
 
-	// import Image from '$lib/components/Image.svelte';
+	import Image from '$lib/components/Image.svelte';
 
 	const props = $props();
 	// const PUBLIC_ASSETS_URL = props.data.publicAssetsUrl ?? '';
 	let games: Game[] = $state(props.data.games);
+
+	let currentImg: GalleryImage | null = $state(null);
+	let currentGame: Game | null = $state(null);
+
+	let modal: HTMLDialogElement;
+
+	const openModal = (game: Game, pic: GalleryImage) => {
+		currentImg = pic;
+		currentGame = game;
+		modal.showModal();
+	};
 </script>
 
 <svelte:head>
@@ -25,7 +36,12 @@
 			<h2>{game.title}</h2>
 			{#each game.images.filter((img: GalleryImage) => img.display) as pic (pic.id)}
 				<figure class="thumb corners" class:nsfw={pic.nsfw}>
-					<a href={resolve(`/photomode/${game.id}/${pic.id}`)}
+					<a
+						href={resolve(`/photomode/${game.id}/${pic.id}`)}
+						onclick={(e) => {
+							e.preventDefault();
+							openModal(game, pic);
+						}}
 						><img
 							alt={pic.alt}
 							src={`${PUBLIC_ASSETS_URL}/${game.id}/${pic.id}-640w.webp`}
@@ -36,6 +52,17 @@
 			{/each}
 		</article>
 	{/each}
+
+	<dialog
+		bind:this={modal}
+		onclick={(e) => {
+			if (e.target === modal) modal.close();
+		}}
+	>
+		{#if currentImg && currentGame}
+			<Image src={`${currentGame.id}/${currentImg.id}`} alt={currentImg.alt} loading="eager" />
+		{/if}
+	</dialog>
 </main>
 
 <style>
@@ -59,6 +86,17 @@
 			opacity: 0.1;
 			pointer-events: none;
 			z-index: 0;
+		}
+	}
+
+	dialog {
+		margin: auto;
+		padding: 0;
+		border: none;
+		box-shadow: 0 0 32px -8px black;
+		&::backdrop {
+			background: rgb(0 0 0 / 0.25);
+			backdrop-filter: blur(4px);
 		}
 	}
 
@@ -105,7 +143,8 @@
 		h2 {
 			grid-column: 1 / -1;
 			font-size: 20px;
-			letter-spacing: 0.2em;
+			letter-spacing: 40%;
+			text-shadow: 0 0 4px rgb(255 255 255 / 0.45);
 			display: grid;
 			align-items: center;
 		}

@@ -32,7 +32,7 @@
 	const assetsUrl = env.PUBLIC_ASSETS_URL ?? 'https://assets.photomode.jono.gay';
 
 	/** Breakpoints matching the sizes exported from GC12 */
-	const BREAKPOINTS = [640, 960, 1280, 1440] as const;
+	const BREAKPOINTS = [640, 960, 1280, 1440, 3440] as const;
 
 	/**
 	 * Builds a direct R2 URL for a given image, extension and width.
@@ -48,12 +48,7 @@
 		return BREAKPOINTS.map((w) => `${buildUrl(imageSrc, extension, w)} ${w}w`).join(', ');
 	}
 
-	const sizes = [
-		'(max-width: 640px) 640px',
-		'(max-width: 960px) 960px',
-		'(max-width: 1280px) 1280px',
-		'1440px'
-	].join(', ');
+	const sizes = '100vw';
 
 	const avifSrcset = $derived(buildSrcset(src, 'avif'));
 	const webpSrcset = $derived(buildSrcset(src, 'webp'));
