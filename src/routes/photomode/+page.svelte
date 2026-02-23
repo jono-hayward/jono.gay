@@ -117,7 +117,7 @@
 	}
 
 	h1 {
-		grid-column: span 6 / span 6;
+		grid-column: 1 / -1;
 		display: grid;
 		place-items: center;
 
