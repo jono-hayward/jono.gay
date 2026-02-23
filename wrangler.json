@@ -1,0 +1,10 @@
+{
+  "name": "jono-dot-gay",
+  "compatibility_date": "2024-01-01",
+  "kv_namespaces": [
+    {
+      "binding": "PHOTOMODE_KV",
+      "id": "b4280d503d6548ada57ca90bd1d7c456"
+    }
+  ]
+}

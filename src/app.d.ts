@@ -3,7 +3,9 @@
 declare global {
 	namespace App {
 		interface Platform {
-			env: Env;
+			env: Env & {
+				PHOTOMODE_KV: KVNamespace;
+			};
 			ctx: ExecutionContext;
 			caches: CacheStorage;
 			cf?: IncomingRequestCfProperties;
@@ -13,7 +15,6 @@ declare global {
 		// interface Locals {}
 		// interface PageData {}
 		// interface PageState {}
-		// interface Platform {}
 	}
 }
 
