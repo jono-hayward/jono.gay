@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { PUBLIC_ASSETS_URL } from '$env/static/public';
 	import { resolve } from '$app/paths';
 	import type { GalleryImage, Game } from '$lib/types/gallery';
 
 	// import Image from '$lib/components/Image.svelte';
 
 	const props = $props();
+	const PUBLIC_ASSETS_URL = props.data.publicAssetsUrl ?? '';
 	let games: Game[] = $state(props.data.games);
 </script>
 
@@ -24,7 +24,11 @@
 			{#each game.images.filter((img: GalleryImage) => img.display) as pic (pic.id)}
 				<figure class="thumb corners" class:nsfw={pic.nsfw}>
 					<a href={resolve(`/photomode/${game.id}/${pic.id}`)}
-						><img alt={pic.alt} src={`${PUBLIC_ASSETS_URL}/${game.id}/${pic.id}-640w.webp`} /></a
+						><img
+							alt={pic.alt}
+							src={`${PUBLIC_ASSETS_URL}/${game.id}/${pic.id}-640w.webp`}
+							loading="lazy"
+						/></a
 					>
 				</figure>
 			{/each}
