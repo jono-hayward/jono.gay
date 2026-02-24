@@ -105,6 +105,11 @@
 	.thumb {
 		margin: 0;
 		position: relative;
+		opacity: 0.65;
+		transition: opacity 350ms ease-in-out;
+		&:has(a:hover) {
+			opacity: 1;
+		}
 		a {
 			position: absolute;
 			inset: -9px;
@@ -113,6 +118,12 @@
 			object-fit: cover;
 			width: 100%;
 			height: 100%;
+			filter: grayscale(1);
+			transition: filter 350ms ease-in-out;
+		}
+
+		a:hover img {
+			filter: grayscale(0);
 		}
 
 		&.nsfw a::after {
