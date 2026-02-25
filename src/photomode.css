@@ -1,0 +1,89 @@
+@import '$lib/styles/reset.css';
+@import '$lib/styles/style.css';
+
+html {
+	background:
+		url('/static/bg-tile.svg') repeat top center,
+		linear-gradient(to bottom right, #0c0b11, ease-in, #1a173e);
+
+	color: white;
+}
+
+#intro {
+	margin-block-start: 55px;
+}
+
+.container {
+	display: grid;
+	width: min(100dvw);
+	margin-inline: auto;
+	grid-template-columns: repeat(auto-fill, 427px);
+	grid-auto-rows: 106px;
+	gap: 1px;
+	justify-content: center;
+	z-index: 1;
+}
+.corners {
+	position: relative;
+
+	border: 13px solid;
+	border-image: url('/static/corner-frame.svg') 13;
+	border-image-outset: 1px;
+}
+
+main {
+	width: 100dvw;
+	min-height: 100dvh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+}
+
+h1 {
+	grid-column: 1 / -1;
+	display: grid;
+	place-items: center;
+
+	span {
+		--spacing: 0.64em;
+		display: block;
+		font-size: 46px;
+		letter-spacing: var(--spacing);
+		line-height: 1;
+		text-align: center;
+		margin-inline-end: calc(-1 * var(--spacing));
+	}
+	--aberration-offset: 0.04em;
+	--aberration-bleed: 0.01em;
+	--aberration-opacity: 0.4;
+	text-shadow:
+		calc(var(--aberration-offset) * 3) 0 var(--aberration-bleed)
+			rgb(0 0 255 / var(--aberration-opacity)),
+		calc(-1 * var(--aberration-offset)) var(--aberration-offset) var(--aberration-bleed)
+			rgb(255 0 255 / var(--aberration-opacity)),
+		calc(-1 * var(--aberration-offset) * 2) calc(-1 * var(--aberration-offset))
+			var(--aberration-bleed) rgb(0 255 0 / var(--aberration-opacity)),
+		calc(-1.5 * var(--aberration-offset)) calc(-0.5 * var(--aberration-offset))
+			var(--aberration-bleed) rgb(255 255 255 / calc(var(--aberration-opacity) / 2)),
+		calc(1.5 * var(--aberration-offset)) calc(0.5 * var(--aberration-offset))
+			var(--aberration-bleed) rgb(255 255 255 / calc(var(--aberration-opacity) / 2));
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		width: 25px;
+		height: 13px;
+		inset-block: auto;
+	}
+
+	&::before {
+		bottom: calc(100% + 13px);
+		background: url('/static/crosshair-half-top.svg') no-repeat center;
+	}
+	&::after {
+		top: calc(100% + 13px);
+		background: url('/static/crosshair-half-bottom.svg') no-repeat center;
+	}
+}
