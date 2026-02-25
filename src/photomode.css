@@ -3,9 +3,8 @@
 
 html {
 	background:
-		#0c0b11,
 		url('/static/bg-tile.svg') repeat top center,
-		linear-gradient(to bottom right, #0c0b11, ease-in, #1a173e);
+		#1a173e linear-gradient(to bottom right, #0c0b11, ease-in, #1a173e);
 
 	color: white;
 }
