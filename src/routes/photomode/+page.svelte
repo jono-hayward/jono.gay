@@ -93,21 +93,26 @@
 			transition: filter 350ms ease-in-out;
 		}
 
-		a:hover img {
-			filter: grayscale(0);
+		a:hover,
+		a:focus-visible {
+			img {
+				filter: grayscale(0);
+			}
 		}
 
 		&.nsfw a::after {
+			font-family: var(--font-mono);
 			content: 'NSFW';
 			position: absolute;
 			inset: 0;
 			display: grid;
 			place-items: center;
+			font-weight: bold;
+			letter-spacing: 64%;
 			background: rgba(0, 0, 0, 0.15);
 			backdrop-filter: blur(12px);
 			color: white;
-			font-size: 14px;
-			letter-spacing: 0.1em;
+			font-size: 0.75em;
 		}
 	}
 
