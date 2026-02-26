@@ -102,18 +102,19 @@
 		}
 
 		&.nsfw a::after {
-			font-family: var(--font-mono);
 			content: 'NSFW';
 			position: absolute;
 			inset: 0;
 			display: grid;
 			place-items: center;
-			font-weight: bold;
-			letter-spacing: 64%;
 			background: rgba(0, 0, 0, 0.15);
 			backdrop-filter: blur(12px);
-			color: white;
+
+			font-family: var(--font-mono);
 			font-size: 0.75em;
+			font-weight: 900;
+			letter-spacing: 64%;
+			color: white;
 		}
 	}
 
