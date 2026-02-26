@@ -4,8 +4,8 @@
 html {
 	background:
 		url('/static/bg-tile.svg') repeat top center,
-		linear-gradient(to bottom right, #0c0b11, ease-in-out, #1a173e) top left / cover,
-		#1a173e;
+		linear-gradient(to bottom right, #0c0b11, ease-in-out, #1a173e) top left / 100% 100%,
+		#0c0b11;
 
 	color: white;
 }
