@@ -18,7 +18,17 @@
 	const openModal = (game: Game, pic: GalleryImage) => {
 		currentImg = pic;
 		currentGame = game;
-		modal.showModal();
+		// modal.showModal();
+	};
+	const unloadModal = () => {
+		modal.addEventListener(
+			'transitionend',
+			() => {
+				currentImg = null;
+				currentGame = null;
+			},
+			{ once: true }
+		);
 	};
 </script>
 
@@ -30,7 +40,7 @@
 	<article id={game.id} class="game container">
 		<h2>{game.title}</h2>
 		{#each game.images.filter((img: GalleryImage) => img.display) as pic (pic.id)}
-			<figure class="thumb corners" class:nsfw={pic.nsfw}>
+			<figure class="thumb" class:nsfw={pic.nsfw}>
 				<a
 					href={resolve(`/photomode/${game.id}/${pic.id}`)}
 					onclick={(e) => {
@@ -41,8 +51,9 @@
 						alt={pic.alt}
 						src={`${PUBLIC_ASSETS_URL}/${game.id}/${pic.id}-640w.webp`}
 						loading="lazy"
-					/></a
-				>
+					/>
+					<div role="presentation" class="corners"></div>
+				</a>
 			</figure>
 		{/each}
 	</article>
@@ -53,9 +64,20 @@
 	onclick={(e) => {
 		if (e.target === modal) modal.close();
 	}}
+	onclose={unloadModal}
 >
 	{#if currentImg && currentGame}
-		<Image game={currentGame} pic={currentImg} loading="eager" />
+		{#key currentImg.id}
+			<figure>
+				<Image
+					game={currentGame}
+					pic={currentImg}
+					loading="eager"
+					onload={() => modal?.showModal()}
+				/>
+				{#if currentImg.caption}<figcaption>{currentImg.caption}</figcaption>{/if}
+			</figure>
+		{/key}
 	{/if}
 </dialog>
 
@@ -67,9 +89,42 @@
 		box-shadow: 0 0 32px -8px black;
 		max-width: 90vw;
 		max-height: 90vh;
+		background: transparent;
+
+		transition-property: opacity, overlay, transform, display;
+		transition-duration: 450ms;
+		transition-timing-function: ease-out;
+		transition-behavior: allow-discrete;
+
+		opacity: 0;
+		transform: scale(0.95);
+
 		&::backdrop {
+			opacity: 0;
 			background: rgb(0 0 0 / 0.45);
-			backdrop-filter: blur(8px);
+
+			transition-property: opacity, overlay, display, backdrop-filter;
+			transition-duration: 450ms;
+			transition-timing-function: ease-out;
+			transition-behavior: allow-discrete;
+		}
+
+		&[open] {
+			opacity: 1;
+			transform: scale(1);
+
+			@starting-style {
+				opacity: 0;
+				transform: scale(0.95);
+			}
+
+			&::backdrop {
+				opacity: 1;
+				backdrop-filter: blur(8px);
+				@starting-style {
+					opacity: 0;
+				}
+			}
 		}
 	}
 
@@ -84,7 +139,7 @@
 		}
 		a {
 			position: absolute;
-			inset: -9px;
+			inset: 4px;
 		}
 		img {
 			object-fit: cover;
@@ -113,9 +168,44 @@
 			font-family: var(--font-mono);
 			font-size: 0.75em;
 			font-weight: 900;
-			letter-spacing: 64%;
+			letter-spacing: 75%;
 			color: white;
 		}
+
+		.corners {
+			position: absolute;
+			inset: -4px;
+			/*opacity: 0;*/
+			scale: 0.98;
+			transition: scale 350ms ease-out;
+			animation: flicker-out 0.3s steps(1, end) forwards;
+		}
+		a:hover .corners {
+			scale: 1;
+			opacity: 1;
+			animation: none;
+		}
+	}
+
+	@keyframes flicker-out {
+		0% {
+			opacity: 1;
+		} /* Fully visible */
+		25% {
+			opacity: 0;
+		} /* Frame 2 — snap off */
+		40% {
+			opacity: 0.75;
+		} /* Frame 3 — snap back */
+		55% {
+			opacity: 0;
+		} /* Frame 4 — snap off again */
+		70% {
+			opacity: 0.5;
+		} /* Brief ghost reappearance */
+		100% {
+			opacity: 0;
+		} /* Gone */
 	}
 
 	.game {
@@ -133,5 +223,17 @@
 			grid-column: span 1;
 			grid-row: span 2;
 		}
+	}
+
+	figure {
+		display: flex;
+		flex-flow: column;
+	}
+
+	figcaption {
+		background: rgb(0 0 0 / 0.65);
+		padding: 1em;
+		color: white;
+		font-weight: 600;
 	}
 </style>

@@ -11,6 +11,7 @@
 		/** Fetch priority hint — use 'high' for hero/LCP images */
 		fetchpriority?: 'high' | 'low' | 'auto';
 		class?: string;
+		onload?: () => void;
 	}
 
 	let {
@@ -18,8 +19,18 @@
 		game,
 		loading = 'lazy',
 		fetchpriority = 'auto',
-		class: className = ''
+		class: className = '',
+		onload
 	}: Props = $props();
+
+	let img: HTMLImageElement;
+
+	$effect(() => {
+		// If the image is already cached and loaded, call onload immediately
+		if (img?.complete) {
+			onload?.();
+		}
+	});
 
 	const assetsUrl = env.PUBLIC_ASSETS_URL ?? 'https://assets.photomode.jono.gay';
 
@@ -72,6 +83,8 @@
 		{fetchpriority}
 		class={className}
 		decoding="async"
+		bind:this={img}
+		{onload}
 	/>
 </picture>
 
