@@ -12,7 +12,7 @@ html {
 }
 
 #intro {
-	margin-block-start: 55px;
+	margin-block-start: 54px;
 }
 
 .container {
@@ -40,6 +40,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	gap: 1px;
+	margin-block-start: 1px;
 }
 
 h1 {
