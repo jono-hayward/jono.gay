@@ -78,7 +78,8 @@
 		position: relative;
 		opacity: 0.65;
 		transition: opacity 350ms ease-in-out;
-		&:has(a:hover) {
+		&:has(a:hover),
+		&:focus-within {
 			opacity: 1;
 		}
 		a {

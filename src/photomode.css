@@ -2,10 +2,10 @@
 @import '$lib/styles/style.css';
 
 html {
-	background-color: #1a173e;
 	background:
 		url('/static/bg-tile.svg') repeat top center,
-		linear-gradient(to bottom right, #0c0b11, ease-in-out, #1a173e) top left / cover;
+		linear-gradient(to bottom right, #0c0b11, ease-in-out, #1a173e) top left / cover,
+		#1a173e;
 
 	color: white;
 }
