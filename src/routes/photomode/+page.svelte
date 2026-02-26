@@ -15,10 +15,11 @@
 
 	let modal: HTMLDialogElement;
 
+	let loadingTimeout: ReturnType<typeof setTimeout> | null = null;
+
 	const openModal = (game: Game, pic: GalleryImage) => {
 		currentImg = pic;
 		currentGame = game;
-		// modal.showModal();
 	};
 	const unloadModal = () => {
 		modal.addEventListener(
@@ -46,6 +47,11 @@
 					onclick={(e) => {
 						e.preventDefault();
 						openModal(game, pic);
+						loadingTimeout = setTimeout(() => {
+							const target = e.target as HTMLElement;
+							const link = target.closest('a');
+							link?.classList.add('loading');
+						}, 500);
 					}}
 					><img
 						alt={pic.alt}
@@ -73,7 +79,14 @@
 					game={currentGame}
 					pic={currentImg}
 					loading="eager"
-					onload={() => modal?.showModal()}
+					onload={() => {
+						modal?.showModal();
+						if (loadingTimeout) {
+							clearTimeout(loadingTimeout);
+							loadingTimeout = null;
+						}
+						document.querySelectorAll('a.loading').forEach((el) => el.classList.remove('loading'));
+					}}
 				/>
 				{#if currentImg.caption}<figcaption>{currentImg.caption}</figcaption>{/if}
 			</figure>
@@ -156,7 +169,18 @@
 			}
 		}
 
-		&.nsfw a::after {
+		a:global(.loading)::after {
+			content: 'loading (TODO: animate this)';
+			position: absolute;
+			inset: 0;
+			z-index: 20;
+			background: rgb(0 0 0 / 0.25);
+			display: grid;
+			place-items: center;
+			color: white;
+		}
+
+		&.nsfw a::before {
 			content: 'NSFW';
 			position: absolute;
 			inset: 0;
@@ -164,6 +188,7 @@
 			place-items: center;
 			background: rgba(0, 0, 0, 0.15);
 			backdrop-filter: blur(12px);
+			z-index: 10;
 
 			font-family: var(--font-mono);
 			font-size: 0.75em;
@@ -173,6 +198,7 @@
 		}
 
 		.corners {
+			pointer-events: none;
 			position: absolute;
 			inset: -4px;
 			/*opacity: 0;*/

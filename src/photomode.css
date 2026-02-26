@@ -95,3 +95,27 @@ h1 {
 		background: url('/static/crosshair-half-bottom.svg') no-repeat center;
 	}
 }
+
+footer {
+	margin-block: 108px;
+	grid-column: 1 / -1;
+	grid-row: span 2;
+
+	div {
+		background: rgb(255 255 255 / 0.05);
+		grid-column: 1 / -1;
+		grid-row: span 2;
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1em;
+		text-align: center;
+	}
+	p {
+		max-width: 75ch;
+	}
+	a {
+		color: inherit;
+	}
+}
