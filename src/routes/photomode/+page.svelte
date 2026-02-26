@@ -178,7 +178,7 @@
 			/*opacity: 0;*/
 			scale: 0.98;
 			transition: scale 350ms ease-out;
-			animation: flicker-out 0.3s steps(1, end) forwards;
+			animation: flicker-out 0.45s steps(1, end) forwards;
 		}
 		a:hover .corners {
 			scale: 1;
