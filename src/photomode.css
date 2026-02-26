@@ -16,9 +16,9 @@ html {
 
 .container {
 	display: grid;
-	width: 96dvw;
+	max-width: 90dvw;
 	margin-inline: auto;
-	grid-template-columns: repeat(auto-fill, 427px);
+	grid-template-columns: repeat(auto-fill, min(90dvw, 427px));
 	grid-auto-rows: 106px;
 	gap: 1px;
 	justify-content: center;
@@ -43,13 +43,18 @@ main {
 
 h1 {
 	grid-column: 1 / -1;
+	grid-row: span 2;
 	display: grid;
 	place-items: center;
+
+	@media (width >= 950px) {
+		grid-row: auto;
+	}
 
 	span {
 		--spacing: 0.64em;
 		display: block;
-		font-size: 46px;
+		font-size: 48px;
 		letter-spacing: var(--spacing);
 		line-height: 1;
 		text-align: center;
