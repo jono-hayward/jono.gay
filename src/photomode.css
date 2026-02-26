@@ -3,6 +3,7 @@
 
 html {
 	background:
+		url('$lib/assets/noise.svg') repeat center,
 		url('/static/bg-tile.svg') repeat top center,
 		linear-gradient(to bottom right, #0c0b11, ease-in-out, #1a173e) top left / 100% 100%,
 		#0c0b11;
