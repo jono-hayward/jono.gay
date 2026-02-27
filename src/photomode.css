@@ -33,6 +33,12 @@ html {
 	border-image-outset: 1px;
 }
 
+figure {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
 main {
 	width: 100dvw;
 	min-height: 100dvh;
@@ -104,17 +110,16 @@ footer {
 	div {
 		background: rgb(255 255 255 / 0.05);
 		grid-column: 1 / -1;
-		grid-row: span 2;
+		grid-row: span 1;
 		display: flex;
-		flex-flow: column;
+
 		align-items: center;
-		justify-content: center;
+		justify-content: space-evenly;
 		gap: 1em;
 		text-align: center;
+		padding: 2em;
 	}
-	p {
-		max-width: 75ch;
-	}
+
 	a {
 		color: inherit;
 	}

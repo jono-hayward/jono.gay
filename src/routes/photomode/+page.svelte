@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import type { GalleryImage, Game } from '$lib/types/gallery';
 
@@ -7,7 +8,6 @@
 	import Image from '$lib/components/Image.svelte';
 
 	const props = $props();
-	// const PUBLIC_ASSETS_URL = props.data.publicAssetsUrl ?? '';
 	let games: Game[] = $state(props.data.games);
 
 	let currentImg: GalleryImage | null = $state(null);
@@ -17,20 +17,55 @@
 
 	let loadingTimeout: ReturnType<typeof setTimeout> | null = null;
 
-	const openModal = (game: Game, pic: GalleryImage) => {
+	function loadModal(e: MouseEvent, game: Game, pic: GalleryImage) {
+		e.preventDefault();
+		loadingTimeout = setTimeout(() => {
+			const target = e.target as HTMLElement;
+			const link = target.closest('a');
+			link?.classList.add('loading');
+		}, 500);
 		currentImg = pic;
 		currentGame = game;
-	};
-	const unloadModal = () => {
+	}
+
+	function openModal() {
+		modal.classList.add('is-opening');
+		modal.showModal();
+
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				modal.classList.remove('is-opening');
+			});
+		});
+
+		if (loadingTimeout) {
+			clearTimeout(loadingTimeout);
+			loadingTimeout = null;
+		}
+		document.querySelectorAll('a.loading').forEach((el) => el.classList.remove('loading'));
+	}
+
+	function closeModal() {
+		console.log('closing modal');
 		modal.addEventListener(
 			'transitionend',
 			() => {
+				modal.close();
+				modal.classList.remove('is-closing');
 				currentImg = null;
 				currentGame = null;
 			},
 			{ once: true }
 		);
-	};
+		modal.classList.add('is-closing');
+	}
+
+	onMount(() => {
+		modal.addEventListener('cancel', (e: Event) => {
+			e.preventDefault();
+			closeModal();
+		});
+	});
 </script>
 
 <svelte:head>
@@ -45,13 +80,7 @@
 				<a
 					href={resolve(`/photomode/${game.id}/${pic.id}`)}
 					onclick={(e) => {
-						e.preventDefault();
-						openModal(game, pic);
-						loadingTimeout = setTimeout(() => {
-							const target = e.target as HTMLElement;
-							const link = target.closest('a');
-							link?.classList.add('loading');
-						}, 500);
+						loadModal(e, game, pic);
 					}}
 					><img
 						alt={pic.alt}
@@ -68,26 +97,13 @@
 <dialog
 	bind:this={modal}
 	onclick={(e) => {
-		if (e.target === modal) modal.close();
+		if (e.target === modal) closeModal();
 	}}
-	onclose={unloadModal}
 >
 	{#if currentImg && currentGame}
 		{#key currentImg.id}
 			<figure>
-				<Image
-					game={currentGame}
-					pic={currentImg}
-					loading="eager"
-					onload={() => {
-						modal?.showModal();
-						if (loadingTimeout) {
-							clearTimeout(loadingTimeout);
-							loadingTimeout = null;
-						}
-						document.querySelectorAll('a.loading').forEach((el) => el.classList.remove('loading'));
-					}}
-				/>
+				<Image game={currentGame} pic={currentImg} onload={openModal} loading="eager" />
 				{#if currentImg.caption}<figcaption>{currentImg.caption}</figcaption>{/if}
 			</figure>
 		{/key}
@@ -97,47 +113,48 @@
 <style>
 	dialog {
 		margin: auto;
+		max-width: 90vw;
+		max-height: 90vh;
 		padding: 0;
 		border: none;
 		box-shadow: 0 0 32px -8px black;
-		max-width: 90vw;
-		max-height: 90vh;
 		background: transparent;
 
-		transition-property: opacity, overlay, transform, display;
-		transition-duration: 450ms;
-		transition-timing-function: ease-out;
+		/* Closed/closing state defaults */
+		--dialog-opacity: 0;
+		--dialog-scale: 0.98;
+		--backdrop-color: transparent;
+		--backdrop-blur: blur(0px);
+		--dur: 0.5s;
+		--delay: 10ms;
+
+		opacity: var(--dialog-opacity);
+		transform: scale(var(--dialog-scale));
+
+		transition:
+			opacity var(--dur) var(--delay) ease-out,
+			transform var(--dur) var(--delay) ease-out,
+			overlay var(--dur) var(--delay) ease-out,
+			display var(--dur) var(--delay) ease-out;
 		transition-behavior: allow-discrete;
 
-		opacity: 0;
-		transform: scale(0.95);
-
 		&::backdrop {
-			opacity: 0;
-			background: rgb(0 0 0 / 0.45);
+			will-change: backdrop-filter, background-color;
 
-			transition-property: opacity, overlay, display, backdrop-filter;
-			transition-duration: 450ms;
-			transition-timing-function: ease-out;
-			transition-behavior: allow-discrete;
+			background-color: var(--backdrop-color);
+			backdrop-filter: var(--backdrop-blur);
+
+			transition:
+				background-color var(--dur) var(--delay) ease-out,
+				backdrop-filter var(--dur) var(--delay) ease-out;
 		}
 
-		&[open] {
-			opacity: 1;
-			transform: scale(1);
-
-			@starting-style {
-				opacity: 0;
-				transform: scale(0.95);
-			}
-
-			&::backdrop {
-				opacity: 1;
-				backdrop-filter: blur(8px);
-				@starting-style {
-					opacity: 0;
-				}
-			}
+		&[open]:not(:global(.is-closing)):not(:global(.is-opening)) {
+			--dialog-opacity: 1;
+			--dialog-scale: 1;
+			--backdrop-color: rgb(0 0 0 / 0.45);
+			--backdrop-blur: blur(12px);
+			--delay: 0ms;
 		}
 	}
 
@@ -200,38 +217,42 @@
 		.corners {
 			pointer-events: none;
 			position: absolute;
-			inset: -4px;
+			inset: 0;
 			/*opacity: 0;*/
-			scale: 0.98;
-			transition: scale 350ms ease-out;
-			animation: flicker-out 0.45s steps(1, end) forwards;
+			/*scale: 0.98;*/
+			transition: inset 350ms ease-out;
+			animation: flicker-out 150ms steps(1, end) forwards;
+			filter: drop-shadow(0 0 4px white);
 		}
 		a:hover .corners {
-			scale: 1;
+			inset: -4px;
 			opacity: 1;
 			animation: none;
+			animation: flicker-in 100ms steps(1, end) forwards;
 		}
 	}
 
-	@keyframes flicker-out {
-		0% {
+	@keyframes flicker-in {
+		0%,
+		66.666% {
+			opacity: 0;
+		}
+		33.333%,
+		100% {
 			opacity: 1;
-		} /* Fully visible */
-		25% {
-			opacity: 0;
-		} /* Frame 2 — snap off */
-		40% {
-			opacity: 0.75;
-		} /* Frame 3 — snap back */
-		55% {
-			opacity: 0;
-		} /* Frame 4 — snap off again */
-		70% {
-			opacity: 0.5;
-		} /* Brief ghost reappearance */
+		}
+	}
+	@keyframes flicker-out {
+		0%,
+		40%,
+		80% {
+			opacity: 1;
+		}
+		20%,
+		60%,
 		100% {
 			opacity: 0;
-		} /* Gone */
+		}
 	}
 
 	.game {

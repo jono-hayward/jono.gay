@@ -35,3 +35,15 @@ h2 {
 	font-family: var(--font-mono);
 	text-transform: uppercase;
 }
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after,
+	*::backdrop {
+		animation-duration: 0.001s !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001s !important;
+		scroll-behavior: auto !important;
+	}
+}
