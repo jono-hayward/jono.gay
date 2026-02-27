@@ -126,16 +126,15 @@
 		--backdrop-color: transparent;
 		--backdrop-blur: blur(0px);
 		--dur: 0.5s;
-		--delay: 10ms;
 
 		opacity: var(--dialog-opacity);
 		transform: scale(var(--dialog-scale));
 
 		transition:
-			opacity var(--dur) var(--delay) ease-out,
-			transform var(--dur) var(--delay) ease-out,
-			overlay var(--dur) var(--delay) ease-out,
-			display var(--dur) var(--delay) ease-out;
+			opacity var(--dur) linear,
+			transform var(--dur) ease-out,
+			overlay var(--dur) ease-out,
+			display var(--dur) ease-out;
 		transition-behavior: allow-discrete;
 
 		&::backdrop {
@@ -145,8 +144,8 @@
 			backdrop-filter: var(--backdrop-blur);
 
 			transition:
-				background-color var(--dur) var(--delay) ease-out,
-				backdrop-filter var(--dur) var(--delay) ease-out;
+				background-color var(--dur) ease-out,
+				backdrop-filter var(--dur) ease-out;
 		}
 
 		&[open]:not(:global(.is-closing)):not(:global(.is-opening)) {
