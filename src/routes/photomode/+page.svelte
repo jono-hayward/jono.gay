@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { resolve } from '$app/paths';
+
 	import type { GalleryImage, Game } from '$lib/types/gallery';
 
-	import { PUBLIC_ASSETS_URL } from '$env/static/public';
-
 	import Image from '$lib/components/Image.svelte';
+	import Thumb from '$lib/components/Thumb.svelte';
 
 	const props = $props();
 	let games: Game[] = $state(props.data.games);
@@ -17,15 +16,13 @@
 
 	let loadingTimeout: ReturnType<typeof setTimeout> | null = null;
 
-	function loadModal(e: MouseEvent, game: Game, pic: GalleryImage) {
-		e.preventDefault();
-		loadingTimeout = setTimeout(() => {
-			const target = e.target as HTMLElement;
-			const link = target.closest('a');
-			link?.classList.add('loading');
-		}, 500);
+	let loadingID: string | null = $state(null);
+
+	function loadModal(game: Game, pic: GalleryImage) {
+		// Add loading graphic to link after a short delay
 		currentImg = pic;
 		currentGame = game;
+		loadingTimeout = setTimeout(() => (loadingID = pic.id), 100);
 	}
 
 	function openModal() {
@@ -35,6 +32,7 @@
 		requestAnimationFrame(() => {
 			requestAnimationFrame(() => {
 				modal.classList.remove('is-opening');
+				loadingID = null;
 			});
 		});
 
@@ -76,20 +74,7 @@
 	<article id={game.id} class="game container">
 		<h2>{game.title}</h2>
 		{#each game.images.filter((img: GalleryImage) => img.display) as pic (pic.id)}
-			<figure class="thumb" class:nsfw={pic.nsfw}>
-				<a
-					href={resolve(`/photomode/${game.id}/${pic.id}`)}
-					onclick={(e) => {
-						loadModal(e, game, pic);
-					}}
-					><img
-						alt={pic.alt}
-						src={`${PUBLIC_ASSETS_URL}/${game.id}/${pic.id}-640w.webp`}
-						loading="lazy"
-					/>
-					<div role="presentation" class="corners"></div>
-				</a>
-			</figure>
+			<Thumb {pic} {game} isLoading={loadingID === pic.id} onclick={() => loadModal(game, pic)} />
 		{/each}
 	</article>
 {/each}
@@ -157,103 +142,6 @@
 		}
 	}
 
-	.thumb {
-		margin: 0;
-		position: relative;
-		opacity: 0.65;
-		transition: opacity 350ms ease-in-out;
-		&:has(a:hover),
-		&:focus-within {
-			opacity: 1;
-		}
-		a {
-			position: absolute;
-			inset: 4px;
-		}
-		img {
-			object-fit: cover;
-			width: 100%;
-			height: 100%;
-			filter: grayscale(1);
-			transition: filter 350ms ease-in-out;
-		}
-
-		a:hover,
-		a:focus-visible {
-			img {
-				filter: grayscale(0);
-			}
-		}
-
-		a:global(.loading)::after {
-			content: 'loading (TODO: animate this)';
-			position: absolute;
-			inset: 0;
-			z-index: 20;
-			background: rgb(0 0 0 / 0.25);
-			display: grid;
-			place-items: center;
-			color: white;
-		}
-
-		&.nsfw a::before {
-			content: 'NSFW';
-			position: absolute;
-			inset: 0;
-			display: grid;
-			place-items: center;
-			background: rgba(0, 0, 0, 0.15);
-			backdrop-filter: blur(12px);
-			z-index: 10;
-
-			font-family: var(--font-mono);
-			font-size: 0.75em;
-			font-weight: 900;
-			letter-spacing: 75%;
-			color: white;
-		}
-
-		.corners {
-			pointer-events: none;
-			position: absolute;
-			inset: 0;
-			/*opacity: 0;*/
-			/*scale: 0.98;*/
-			transition: inset 350ms ease-out;
-			animation: flicker-out 150ms steps(1, end) forwards;
-			filter: drop-shadow(0 0 4px white);
-		}
-		a:hover .corners {
-			inset: -4px;
-			opacity: 1;
-			animation: none;
-			animation: flicker-in 100ms steps(1, end) forwards;
-		}
-	}
-
-	@keyframes flicker-in {
-		0%,
-		66.666% {
-			opacity: 0;
-		}
-		33.333%,
-		100% {
-			opacity: 1;
-		}
-	}
-	@keyframes flicker-out {
-		0%,
-		40%,
-		80% {
-			opacity: 1;
-		}
-		20%,
-		60%,
-		100% {
-			opacity: 0;
-		}
-	}
-
 	.game {
 		margin-top: 107px;
 		h2 {
@@ -265,7 +153,7 @@
 			align-items: center;
 		}
 
-		figure {
+		:global(.thumb) {
 			grid-column: span 1;
 			grid-row: span 2;
 		}
