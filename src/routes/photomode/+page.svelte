@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-
 	import type { GalleryImage, Game } from '$lib/types/gallery';
 
 	import Image from '$lib/components/Image.svelte';
