@@ -19,7 +19,7 @@
 	}
 </script>
 
-<figure class="thumb" class:nsfw={pic.nsfw}>
+<figure class="thumb">
 	<a href={resolve(`/photomode/${game.id}/${pic.id}`)} onclick={handleClick}
 		><img
 			alt={pic.alt}
@@ -28,6 +28,7 @@
 		/>
 		<div role="presentation" class="corners"></div>
 	</a>
+	{#if pic.nsfw}<div class="nsfw-overlay"><span>NSFW</span></div>{/if}
 	{#if isLoading}<Loader />{/if}
 </figure>
 
@@ -60,21 +61,26 @@
 			}
 		}
 
-		&.nsfw a::before {
+		.nsfw-overlay {
 			content: 'NSFW';
 			position: absolute;
-			inset: 0;
+			inset: 4px;
 			display: grid;
 			place-items: center;
 			background: rgba(0, 0, 0, 0.15);
 			backdrop-filter: blur(12px);
-			z-index: 10;
 
-			font-family: var(--font-mono);
-			font-size: 0.75em;
-			font-weight: 900;
-			letter-spacing: 75%;
-			color: white;
+			pointer-events: none;
+
+			span {
+				display: block;
+				font-family: var(--font-mono);
+				font-size: 0.75em;
+				font-weight: 900;
+				letter-spacing: 0.75em;
+				padding-left: 0.75em;
+				color: white;
+			}
 		}
 
 		.corners {
