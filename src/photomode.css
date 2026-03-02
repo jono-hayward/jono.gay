@@ -4,11 +4,45 @@
 html {
 	background:
 		url('$lib/assets/noise.svg') repeat center,
-		url('/static/bg-tile.svg') repeat top center,
+		url('$lib/assets/bg-tile.svg') repeat left calc(50% + 53px) top 0,
 		linear-gradient(to bottom right, #0c0b11, ease-in-out, #1a173e) top left / 100% 100%,
 		#0c0b11;
 
 	color: white;
+}
+
+:root {
+	--cell-size: 106px;
+	--grid-gap: 1px;
+	--cols: 3;
+	--img-rows: 2;
+
+	--onecol: calc(var(--cols) * (var(--cell-size) + var(--grid-gap)) - var(--grid-gap));
+}
+
+@media (width >= 500px) {
+	:root {
+		--cols: 4;
+	}
+	html {
+		background:
+			url('$lib/assets/noise.svg') repeat center,
+			url('$lib/assets/bg-tile.svg') repeat center top,
+			linear-gradient(to bottom right, #0c0b11, ease-in-out, #1a173e) top left / 100% 100%,
+			#0c0b11;
+	}
+}
+
+@media (width >= 720px) {
+	:root {
+		--cols: 3;
+	}
+}
+
+@media (width >= 950px) {
+	:root {
+		--cols: 4;
+	}
 }
 
 #intro {
@@ -19,9 +53,9 @@ html {
 	display: grid;
 	max-width: 90dvw;
 	margin-inline: auto;
-	grid-template-columns: repeat(auto-fill, min(90dvw, 427px));
-	grid-auto-rows: 106px;
-	gap: 1px;
+	grid-template-columns: repeat(auto-fill, min(90dvw, var(--onecol)));
+	grid-auto-rows: var(--cell-size);
+	gap: var(--grid-gap);
 	justify-content: center;
 	z-index: 1;
 }
@@ -29,7 +63,7 @@ html {
 	position: relative;
 
 	border: 13px solid;
-	border-image: url('/static/corner-frame.svg') 13;
+	border-image: url('$lib/assets/corner-frame.svg') 13;
 	border-image-outset: 1px;
 }
 
@@ -40,7 +74,7 @@ figure {
 }
 
 main {
-	width: 100dvw;
+	width: 100%;
 	min-height: 100dvh;
 	position: relative;
 	display: flex;
@@ -94,11 +128,11 @@ h1 {
 
 	&::before {
 		bottom: calc(100% + 13px);
-		background: url('/static/crosshair-half-top.svg') no-repeat center;
+		background: url('$lib/assets/crosshair-half-top.svg') no-repeat center;
 	}
 	&::after {
 		top: calc(100% + 13px);
-		background: url('/static/crosshair-half-bottom.svg') no-repeat center;
+		background: url('$lib/assets/crosshair-half-bottom.svg') no-repeat center;
 	}
 }
 
@@ -110,14 +144,23 @@ footer {
 	div {
 		background: rgb(255 255 255 / 0.05);
 		grid-column: 1 / -1;
-		grid-row: span 1;
+		grid-row: span 2;
 		display: flex;
 
-		align-items: center;
+		flex-flow: column;
+
 		justify-content: space-evenly;
-		gap: 1em;
-		text-align: center;
-		padding: 2em;
+		padding-inline: 2em;
+		gap: 0;
+		font-size: 0.8em;
+
+		@media (width >= 720px) {
+			grid-row: span 1;
+		}
+
+		@media (width >= 950px) {
+			font-size: 1em;
+		}
 	}
 
 	a {

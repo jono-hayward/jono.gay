@@ -24,11 +24,9 @@
 	<div>
 		<p>
 			Made with ❤️ and ☕ in Naarm by <a href="https://jono.gay">Jono</a>.
-		</p>
-		<p>
-			All game assets depicted remain the property of their respective developers and publishers.<br
-			/>
-			Copyright is claimed solely over the original composition, framing, and post-processing edits.
+			<br />
+			All game assets depicted remain the property of their respective developers and publishers. Copyright
+			is claimed solely over the original composition, framing, and post-processing edits.
 		</p>
 	</div>
 </footer>

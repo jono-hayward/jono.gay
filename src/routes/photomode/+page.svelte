@@ -155,7 +155,7 @@
 
 		:global(.thumb) {
 			grid-column: span 1;
-			grid-row: span 2;
+			grid-row: span var(--img-rows);
 		}
 	}
 
