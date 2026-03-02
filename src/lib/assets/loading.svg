@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="l" shape-rendering="geometricPrecision" viewBox="0 0 241 183">
+  <style>
+    @keyframes focus-l_to__to{0%{transform:translate(26.5px,91.5px)}15.25%{transform:translate(26.5px,91.5px);animation-timing-function:cubic-bezier(.215,.61,.355,1)}20%,to{transform:translate(6.5px,91.5px)}}@keyframes focus-l_c_o{0%,75.5%,to{opacity:0}15.25%{opacity:0;animation-timing-function:cubic-bezier(.215,.61,.355,1)}20%{opacity:1}50%,69.75%,73.25%{opacity:1;animation-timing-function:step-end}68.25%,71.75%{opacity:0;animation-timing-function:step-end}}@keyframes focus-r_to__to{0%{transform:translate(214.5px,91.5px)}15.25%{transform:translate(214.5px,91.5px);animation-timing-function:cubic-bezier(.215,.61,.355,1)}20%,to{transform:translate(234.5px,91.5px)}}@keyframes focus-r_c_o{0%,75.5%,to{opacity:0}15.25%{opacity:0;animation-timing-function:cubic-bezier(.215,.61,.355,1)}20%{opacity:1}50%,69.75%,73.25%{opacity:1;animation-timing-function:step-end}68.25%,71.75%{opacity:0;animation-timing-function:step-end}}@keyframes focus-t_to__to{0%,14.25%{transform:translate(120.5px,48.5px)}16.5%,to{transform:translate(120.5px,38.5px)}}@keyframes focus-t_c_o{0%,14.25%,73.75%,to{opacity:0}16.5%{opacity:1}50%,57.75%,62.25%,70.75%{opacity:1;animation-timing-function:step-end}56%,60.5%,64.25%{opacity:0;animation-timing-function:step-end}}@keyframes focus-c_ts__ts{0%{transform:translate(120.5px,91.5px) scale(.6,.6)}15.25%{transform:translate(120.5px,91.5px) scale(.6,.6);animation-timing-function:cubic-bezier(.215,.61,.355,1)}25%,to{transform:translate(120.5px,91.5px) scale(1,1)}}@keyframes focus-c_c_o{0%,80%,to{opacity:0}15.25%{opacity:0;animation-timing-function:cubic-bezier(.215,.61,.355,1)}25%{opacity:1}50%,57.75%,62.25%,70.75%,74.75%,78.75%{opacity:1;animation-timing-function:step-end}56%,60.5%,64.25%,72.25%,76.25%{opacity:0;animation-timing-function:step-end}}@keyframes focus-b_to__to{0%,14.25%{transform:translate(120.5px,134.5px)}16.5%,to{transform:translate(120.5px,144.5px)}}@keyframes focus-b_c_o{0%,14.25%,75.5%,to{opacity:0}16.5%{opacity:1}50%,57.75%,62.25%,70.75%{opacity:1;animation-timing-function:step-end}56%,60.5%,64.25%{opacity:0;animation-timing-function:step-end}}@keyframes focus-mid-l_to__to{0%,13%{transform:translate(68.431599px,91.5px)}15.25%,to{transform:translate(58.431599px,91.5px)}}@keyframes focus-mid-l_c_o{0%,13%,74%,to{opacity:0}15.25%,51.5%,56%{opacity:1;animation-timing-function:step-end}50%,54.5%{opacity:0;animation-timing-function:step-end}}@keyframes focus-mid-r_to__to{0%,13%{transform:translate(172.5px,91.5px)}15.25%,to{transform:translate(182.5px,91.5px)}}@keyframes focus-mid-r_c_o{0%,13%,75%,to{opacity:0}15.25%,51.5%,56%{opacity:1;animation-timing-function:step-end}50%,54.5%{opacity:0;animation-timing-function:step-end}}@keyframes crosshair-l__sz{0%{width:0;height:1px;animation-timing-function:cubic-bezier(.55,.055,.675,.19)}7.5%{width:123px;height:1px;animation-timing-function:cubic-bezier(.215,.61,.355,1)}15%,to{width:18px;height:1px}}@keyframes crosshair-l_c_o{0%,11%,50%,67.75%,7%{opacity:1;animation-timing-function:step-end}13%,5%,66.75%,9%{opacity:0;animation-timing-function:step-end}15%{opacity:1}69%,to{opacity:0}}@keyframes crosshair-l_to__to{0%{transform:translate(227px,91.5px);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}7.5%{transform:translate(68px,91.5px);animation-timing-function:cubic-bezier(.215,.61,.355,1)}15%,to{transform:translate(32px,91.5px)}}@keyframes crosshair-r__sz{0%{width:0;height:1px;animation-timing-function:cubic-bezier(.55,.055,.675,.19)}7.5%{width:123px;height:1px;animation-timing-function:cubic-bezier(.215,.61,.355,1)}15%,to{width:18px;height:1px}}@keyframes crosshair-r_c_o{0%,11%,50%,67.75%,7%{opacity:1;animation-timing-function:step-end}13%,5%,66.75%,9%{opacity:0;animation-timing-function:step-end}15%{opacity:1}69%,to{opacity:0}}@keyframes crosshair-r_to__to{0%{transform:translate(32px,91.5px);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}7.5%{transform:translate(68px,91.5px);animation-timing-function:cubic-bezier(.215,.61,.355,1)}15%,to{transform:translate(209px,91.5px)}}@keyframes crosshair-t__sz{0%{width:0;height:1px;animation-timing-function:cubic-bezier(.55,.055,.675,.19)}7.5%{width:105px;height:1px;animation-timing-function:cubic-bezier(.215,.61,.355,1)}15%,to{width:18px;height:1px}}@keyframes crosshair-t_c_o{0%,11%,50%,67.75%,7%{opacity:1;animation-timing-function:step-end}13%,5%,66.75%,9%{opacity:0;animation-timing-function:step-end}15%{opacity:1}69%,to{opacity:0}}@keyframes crosshair-t_to__to{0%{transform:translate(121px,62px);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}7.5%{transform:translate(121px,-82px);animation-timing-function:cubic-bezier(.215,.61,.355,1)}15%,to{transform:translate(121px,-121px)}}@keyframes crosshair-b__sz{0%{width:0;height:1px;animation-timing-function:cubic-bezier(.55,.055,.675,.19)}7.5%{width:106px;height:1px;animation-timing-function:cubic-bezier(.215,.61,.355,1)}15%,to{width:18px;height:1px}}@keyframes crosshair-b_c_o{0%,11%,50%,67.75%,7%{opacity:1;animation-timing-function:step-end}13%,5%,66.75%,9%{opacity:0;animation-timing-function:step-end}15%{opacity:1}69%,to{opacity:0}}@keyframes crosshair-b_to__to{0%{transform:translate(286px,-121px);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}7.5%{transform:translate(286px,-83px);animation-timing-function:cubic-bezier(.215,.61,.355,1)}15%,to{transform:translate(286px,44px)}}@keyframes arcs_ts__ts{0%,15.5%{transform:translate(120.528504px,91.528504px) scale(.8,.8)}25%,to{transform:translate(120.528504px,91.528504px) scale(1,1)}}@keyframes arcs_c_o{0%,15.5%,21%,67%,to{opacity:0}19%{opacity:.368421}19.25%,61.25%,64%{opacity:0;animation-timing-function:step-end}21.25%{opacity:.605263}25%{opacity:1}50%,62.5%,65.5%{opacity:1;animation-timing-function:step-end}}
+  </style>
+  <g id="focus-l_to" style="animation:focus-l_to__to 4000ms linear infinite normal forwards" transform="translate(26.5,91.5)">
+    <g id="focus-l" opacity="0" style="animation:focus-l_c_o 4000ms linear infinite normal forwards" transform="translate(-6.5,-91.5)">
+      <path fill="#fff" d="M1 94v6a3 3 0 0 0 3 3h5a3 3 0 0 0 3-3v-6h1v6a4 4 0 0 1-3.794 3.995L9 104H4a4 4 0 0 1-3.995-3.794L0 100v-6z"/>
+      <path fill="#fff" d="M.005 82.794A4 4 0 0 1 4 79h5a4 4 0 0 1 4 4v6h-1v-6a3 3 0 0 0-3-3H4a3 3 0 0 0-3 3v6H0v-6z"/>
+      <path fill="#fff" fill-rule="evenodd" d="M4 91a2 2 0 0 1 2-2h1a2 2 0 0 1 1.99 1.796L9 91v1l-.01.204a2 2 0 0 1-1.786 1.785L7 94H6a2 2 0 0 1-2-2zm1 1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1z" clip-rule="evenodd"/>
+    </g>
+  </g>
+  <g id="focus-r_to" style="animation:focus-r_to__to 4000ms linear infinite normal forwards" transform="translate(214.5,91.5)">
+    <g id="focus-r" opacity="0" style="animation:focus-r_c_o 4000ms linear infinite normal forwards" transform="translate(-234.5,-91.5)">
+      <path fill="#fff" d="M229 94v6a3 3 0 0 0 3 3h5a3 3 0 0 0 3-3v-6h1v6a4 4 0 0 1-3.794 3.995L237 104h-5a4 4 0 0 1-3.995-3.794L228 100v-6z"/>
+      <path fill="#fff" d="M228.005 82.794A4 4 0 0 1 232 79h5a4 4 0 0 1 4 4v6h-1v-6a3 3 0 0 0-3-3h-5a3 3 0 0 0-3 3v6h-1v-6z"/>
+      <path fill="#fff" fill-rule="evenodd" d="M232 91a2 2 0 0 1 2-2h1a2 2 0 0 1 1.989 1.796L237 91v1l-.011.204a2 2 0 0 1-1.785 1.785L235 94h-1a2 2 0 0 1-2-2zm1 1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1z" clip-rule="evenodd"/>
+    </g>
+  </g>
+  <g id="focus-t_to" style="animation:focus-t_to__to 4000ms linear infinite normal forwards" transform="translate(120.5,48.5)">
+    <g id="focus-t" opacity="0" style="animation:focus-t_c_o 4000ms linear infinite normal forwards" transform="translate(-120.5,-38.5)">
+      <path fill="#fff" d="M118 32h-10a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h10v1h-10a4 4 0 0 1-3.995-3.794L104 42v-7a4 4 0 0 1 4-4h10z"/>
+      <path fill="#fff" d="M133.206 31.005A4 4 0 0 1 137 35v7a4 4 0 0 1-3.794 3.995L133 46h-10v-1h10a3 3 0 0 0 3-3v-7a3 3 0 0 0-3-3h-10v-1h10z"/>
+      <path fill="#fff" fill-rule="evenodd" d="M121 36a2 2 0 0 1 2 2v1a2 2 0 0 1-1.796 1.99L121 41h-1l-.204-.01a2 2 0 0 1-1.785-1.786L118 39v-1a2 2 0 0 1 2-2zm-1 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1z" clip-rule="evenodd"/>
+    </g>
+  </g>
+  <g id="focus-c_ts" style="animation:focus-c_ts__ts 4000ms linear infinite normal forwards" transform="translate(120.5,91.5) scale(0.6,0.6)">
+    <g id="focus-c" opacity="0" style="animation:focus-c_c_o 4000ms linear infinite normal forwards" transform="translate(-120.5,-91.5)">
+      <path fill="#fff" d="M118 82h-10a3 3 0 0 0-3 3v13a3 3 0 0 0 3 3h10v1h-10a4 4 0 0 1-3.995-3.794L104 98V85a4 4 0 0 1 4-4h10z"/>
+      <path fill="#fff" d="M133.206 81.005A4 4 0 0 1 137 85v13a4 4 0 0 1-3.794 3.995L133 102h-10v-1h10a3 3 0 0 0 3-3V85a3 3 0 0 0-3-3h-10v-1h10z"/>
+      <path fill="#fff" fill-rule="evenodd" d="M121 89a2 2 0 0 1 2 2v1a2 2 0 0 1-1.796 1.99L121 94h-1l-.204-.01a2 2 0 0 1-1.785-1.786L118 92v-1a2 2 0 0 1 2-2zm-1 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1z" clip-rule="evenodd"/>
+    </g>
+  </g>
+  <g id="focus-b_to" style="animation:focus-b_to__to 4000ms linear infinite normal forwards" transform="translate(120.5,134.5)">
+    <g id="focus-b" opacity="0" style="animation:focus-b_c_o 4000ms linear infinite normal forwards" transform="translate(-120.5,-144.5)">
+      <path fill="#fff" d="M118 138h-10a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h10v1h-10a4 4 0 0 1-3.995-3.794L104 148v-7a4 4 0 0 1 4-4h10z"/>
+      <path fill="#fff" d="M133.206 137.005A4 4 0 0 1 137 141v7a4 4 0 0 1-3.794 3.995L133 152h-10v-1h10a3 3 0 0 0 3-3v-7a3 3 0 0 0-3-3h-10v-1h10z"/>
+      <path fill="#fff" fill-rule="evenodd" d="M121 142a2 2 0 0 1 2 2v1a2 2 0 0 1-1.796 1.989L121 147h-1l-.204-.011a2 2 0 0 1-1.785-1.785L118 145v-1a2 2 0 0 1 2-2zm-1 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1z" clip-rule="evenodd"/>
+    </g>
+  </g>
+  <g id="focus-mid-l_to" style="animation:focus-mid-l_to__to 4000ms linear infinite normal forwards" transform="translate(68.431599,91.5)">
+    <g id="focus-mid-l" opacity="0" style="animation:focus-mid-l_c_o 4000ms linear infinite normal forwards" transform="translate(-58.431599,-91.5)">
+      <path fill="#fff" d="M54.932 94v3a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3v-3h1v3l-.005.206a4 4 0 0 1-3.79 3.789l-.205.005h-1a4 4 0 0 1-4-4v-3z"/>
+      <path fill="#fff" d="M53.932 86a4 4 0 0 1 4-4h1a4 4 0 0 1 3.995 3.794l.005.206v3h-1v-3a3 3 0 0 0-3-3h-1a3 3 0 0 0-3 3v3h-1z"/>
+      <path fill="#fff" fill-rule="evenodd" d="M55.932 91a2 2 0 0 1 2-2h1a2 2 0 0 1 1.989 1.796l.01.204v1l-.01.204a2 2 0 0 1-1.785 1.785l-.204.011h-1a2 2 0 0 1-2-2zm1 1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1z" clip-rule="evenodd"/>
+    </g>
+  </g>
+  <g id="focus-mid-r_to" style="animation:focus-mid-r_to__to 4000ms linear infinite normal forwards" transform="translate(172.5,91.5)">
+    <g id="focus-mid-r" opacity="0" style="animation:focus-mid-r_c_o 4000ms linear infinite normal forwards" transform="translate(-182.5,-91.5)">
+      <path fill="#fff" d="M179 94v3a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3v-3h1v3l-.005.206a4 4 0 0 1-3.789 3.789L183 101h-1a4 4 0 0 1-4-4v-3z"/>
+      <path fill="#fff" d="M178 86a4 4 0 0 1 4-4h1a4 4 0 0 1 3.995 3.794L187 86v3h-1v-3a3 3 0 0 0-3-3h-1a3 3 0 0 0-3 3v3h-1z"/>
+      <path fill="#fff" fill-rule="evenodd" d="M180 91a2 2 0 0 1 2-2h1a2 2 0 0 1 1.989 1.796L185 91v1l-.011.204a2 2 0 0 1-1.785 1.785L183 94h-1a2 2 0 0 1-2-2zm1 1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1z" clip-rule="evenodd"/>
+    </g>
+  </g>
+  <g id="crosshair-l_to" style="animation:crosshair-l_to__to 4000ms linear infinite normal forwards" transform="translate(227,91.5)">
+    <rect id="crosshair-l" width="0" height="1" fill="#fff" rx="0" ry="0" style="animation-name:crosshair-l__sz,crosshair-l_c_o;animation-duration:4000ms;animation-fill-mode:forwards;animation-timing-function:linear;animation-direction:normal;animation-iteration-count:infinite" transform="translate(-9,-0.5)"/>
+  </g>
+  <g id="crosshair-r_to" style="animation:crosshair-r_to__to 4000ms linear infinite normal forwards" transform="translate(32,91.5)">
+    <rect id="crosshair-r" width="0" height="1" fill="#fff" rx="0" ry="0" style="animation-name:crosshair-r__sz,crosshair-r_c_o;animation-duration:4000ms;animation-fill-mode:forwards;animation-timing-function:linear;animation-direction:normal;animation-iteration-count:infinite" transform="translate(-9,-0.5)"/>
+  </g>
+  <g id="crosshair-t_to" style="animation:crosshair-t_to__to 4000ms linear infinite normal forwards" transform="translate(121,62)">
+    <rect id="crosshair-t" width="0" height="1" fill="#fff" rx="0" ry="0" style="animation-name:crosshair-t__sz,crosshair-t_c_o;animation-duration:4000ms;animation-fill-mode:forwards;animation-timing-function:linear;animation-direction:normal;animation-iteration-count:infinite" transform="rotate(90) translate(121,0)"/>
+  </g>
+  <g id="crosshair-b_to" style="animation:crosshair-b_to__to 4000ms linear infinite normal forwards" transform="translate(286,-121)">
+    <rect id="crosshair-b" width="0" height="1" fill="#fff" rx="0" ry="0" style="animation-name:crosshair-b__sz,crosshair-b_c_o;animation-duration:4000ms;animation-fill-mode:forwards;animation-timing-function:linear;animation-direction:normal;animation-iteration-count:infinite" transform="rotate(90) translate(121,165)"/>
+  </g>
+  <g id="arcs_ts" style="animation:arcs_ts__ts 4000ms linear infinite normal forwards" transform="translate(120.528504,91.528504) scale(0.8,0.8)">
+    <g id="arcs" opacity="0" style="animation:arcs_c_o 4000ms linear infinite normal forwards" transform="translate(-120.528503,-91.528503)">
+      <path fill="none" stroke="#fff" stroke-linecap="round" d="M172.057 61.779A59.5 59.5 0 0 0 150.279 40"/>
+      <path fill="none" stroke="#fff" stroke-linecap="round" d="M90.779 40A59.5 59.5 0 0 0 69 61.779"/>
+      <path fill="none" stroke="#fff" stroke-linecap="round" d="M69 121.279a59.5 59.5 0 0 0 21.779 21.778"/>
+      <path fill="none" stroke="#fff" stroke-linecap="round" d="M150.279 143.057a59.5 59.5 0 0 0 21.778-21.778"/>
+    </g>
+  </g>
+</svg>

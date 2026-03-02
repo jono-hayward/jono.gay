@@ -1,13 +1,11 @@
 <script lang="ts">
-	import loading_vid from '$lib/assets/loading-anim.webm';
+	import loading_anim from '$lib/assets/loading.svg';
 </script>
 
-<video class="loader" loop autoplay muted playsinline>
-	<source src={loading_vid} />
-</video>
+<img src={loading_anim} alt="Loading..." class="loader" />
 
 <style>
-	video {
+	.loader {
 		object-fit: contain;
 	}
 </style>
