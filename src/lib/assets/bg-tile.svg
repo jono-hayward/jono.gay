@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="107" shape-rendering="crispEdges" height="107" fill="none" viewBox="0 0 107 107">
+  <g fill="#fff" clip-path="url(#clip)" opacity="0.1">
+    <path d="M41 53v1h12v12h1V54h12v-1H54V41h-1v12z"/>
+    <g>
+      <circle cx="107" cy="107" r="1"/>
+      <circle cy="107" r="1"/>
+      <circle cx="107" r="1"/>
+      <circle r="1"/>
+    </g>
+  </g>
+  <defs>
+    <clipPath id="clip">
+      <path fill="#fff" d="M0 0h107v107H0z"/>
+    </clipPath>
+  </defs>
+</svg>
