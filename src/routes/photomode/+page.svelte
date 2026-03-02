@@ -43,7 +43,6 @@
 	}
 
 	function closeModal() {
-		console.log('closing modal');
 		modal.addEventListener(
 			'transitionend',
 			() => {
